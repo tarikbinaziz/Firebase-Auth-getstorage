@@ -1,6 +1,5 @@
 import 'package:firebase/helper/auth_helper.dart';
 import 'package:firebase/views/signin.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class signup_screen extends StatelessWidget {
@@ -34,13 +33,19 @@ class signup_screen extends StatelessWidget {
                     final userEmail = _email.text;
                     final userPassword = _password.text;
                     var obj = AuthHelper();
-                    obj.signUp(userEmail, userPassword, context);
+                    //   obj.signUp(userEmail, userPassword, context);
                   },
                   child: Text('sign up')),
+              SizedBox(
+                height: 30,
+              ),
               TextButton(
                   onPressed: () => Navigator.push(context,
                       MaterialPageRoute(builder: (_) => signin_screen())),
                   child: Text('Already have an account? Login')),
+              TextButton(
+                  onPressed: () => AuthHelper().signInWithGoogle(context),
+                  child: const Text('sign in with google'))
             ],
           ),
         ),
